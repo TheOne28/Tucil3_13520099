@@ -1,6 +1,8 @@
 import os.path
 from random import randint
 
+stepAll = None
+
 '''
 Setup table
 Mengecek apakah akan membaca table dari input atau membuat random table
@@ -125,6 +127,8 @@ def printKurangi(listKurangi):
 
 def printRoute(solutionBoard, step):
     if(solutionBoard == None):
-        return step
+        global stepAll
+        stepAll = step
+        return
     printRoute(solutionBoard.get_parent(), step + 1)
     solutionBoard.printTable()

@@ -35,8 +35,8 @@ def solve(table):
 
     while(not pq.empty()):
         if(copyTable.is_target()):
-            step = ioHandler.printRoute(copyTable, 0)
-            return step
+            ioHandler.printRoute(copyTable, 0)
+            return
         else:
             front = pq.pop()
             listKurangi, totalKurang, solveable = front.is_solveable()
@@ -84,10 +84,12 @@ def main():
 
 
     solve(root)
-    print("Puzzle diselesaikan !!")
+
+    step = ioHandler.stepAll
+    print("Puzzle diselesaikan dalam {} langkah!!".format(step))
 
     stop = timeit.default_timer()
-    print("Waktu yang dibutuhkan: ", stop - start, " second")
+    print("Waktu yang dibutuhkan: ", stop - start, " sekon")
     print("Simpul yang dibangkitkan: ", boardCount)
 
 if(__name__ == "__main__"):
