@@ -65,7 +65,7 @@ def get_input():
 
         name = input("Silahkan masukkan nama file (lengkap dengan ekstensi): ")
 
-        name = "../test/input/" + name
+        name = "../test/" + name
         myPath = os.path.abspath(os.path.dirname(__file__))
         path = os.path.join(myPath, name)
 
