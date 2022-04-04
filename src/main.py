@@ -9,7 +9,6 @@ solutionBoard = None
 pq = PriorityQueue()
 boardCount = 0
 
-
 def generateTable(table, moveBefore=None):
     tableUp = table.moveBlank(-1, 0)
     tableDown = table.moveBlank(1, 0)
@@ -32,17 +31,17 @@ def generateTable(table, moveBefore=None):
 
 def solve(table):
     copyTable = deepcopy(table)
+    pq.push(table)
 
-    while(True):
+    while(not pq.empty()):
         if(copyTable.is_target()):
-            ioHandler.printRoute(copyTable)
-            break
+            step = ioHandler.printRoute(copyTable, 0)
+            return step
         else:
-            if(pq.empty()):
-                generateTable(copyTable)
-                copyTable = pq.front()
-            else:
-                front = pq.pop()
+            front = pq.pop()
+            listKurangi, totalKurang, solveable = front.is_solveable()
+            
+            if(solveable):
                 generateTable(front, front.get_move_before())
                 copyTable = pq.front()            
 
@@ -86,9 +85,9 @@ def main():
 
     solve(root)
     print("Puzzle diselesaikan !!")
-    
+
     stop = timeit.default_timer()
-    print("Waktu yang dibutuhkan: ", stop - start, " sekon")
+    print("Waktu yang dibutuhkan: ", stop - start, " second")
     print("Simpul yang dibangkitkan: ", boardCount)
 
 if(__name__ == "__main__"):

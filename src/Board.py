@@ -69,8 +69,6 @@ class Board:
         else:
             return listKurangi, totalKurang, True
 
-
-
     def get_table(self):
         return self.table
 

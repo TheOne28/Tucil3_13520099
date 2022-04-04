@@ -61,11 +61,11 @@ def get_input():
             print("Input tidak valid!")
 
     if(choice == 1):
-        print("File input harus terletak di folder test/input!!")
+        print("File input harus terletak di folder test !!")
 
-        name = input("Silahkan masukkan nama file: ")
+        name = input("Silahkan masukkan nama file (lengkap dengan ekstensi): ")
 
-        name = "../tests/input/" + name
+        name = "../test/input/" + name
         myPath = os.path.abspath(os.path.dirname(__file__))
         path = os.path.join(myPath, name)
 
@@ -123,8 +123,8 @@ def printKurangi(listKurangi):
             print("   {}               {}".format(numb, listKurangi[numb]))
 
 
-def printRoute(solutionBoard):
+def printRoute(solutionBoard, step):
     if(solutionBoard == None):
-        return
-    printRoute(solutionBoard.get_parent())
+        return step
+    printRoute(solutionBoard.get_parent(), step + 1)
     solutionBoard.printTable()
