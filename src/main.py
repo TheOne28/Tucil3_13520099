@@ -1,7 +1,7 @@
 from copy import deepcopy
 import timeit
-import ioHandler
 
+import ioHandler
 from Board import Board
 from PrioQueue import PriorityQueue
 

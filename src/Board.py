@@ -1,5 +1,4 @@
 from copy import deepcopy
-import heapq
 
 target = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]
 
@@ -9,6 +8,8 @@ class Board:
         indX -> index X yang kosong 
         indY -> index Y yang kosong
         depth -> kedalaman sekarang
+        parent -> board yang menggenerate board sekarang
+        moveBefore -> pergeseran yang dilakukan untuk mencapai target ini
     '''
     
     def __init__(self, table, indX, indY, depth, parent=None ,moveBefore=None) :

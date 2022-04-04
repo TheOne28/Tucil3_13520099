@@ -116,6 +116,10 @@ def check_table_valid(table):
                 return False
     return True
 
+'''
+Mengecek hasil Kurang(i) untuk setiap i
+'''
+
 def printKurangi(listKurangi):
     print ("   i            Kurang(i)")
     for numb in sorted(listKurangi):
@@ -124,6 +128,9 @@ def printKurangi(listKurangi):
         else:
             print("   {}               {}".format(numb, listKurangi[numb]))
 
+'''
+Mencetak semua Board yang dilalui sampai target
+'''
 
 def printRoute(solutionBoard, step):
     if(solutionBoard == None):
