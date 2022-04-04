@@ -67,34 +67,16 @@ def main():
     
     root = Board(table, indX, indY, 0)
 
-    varX = 0
-    totalKurang = 0
-    listKurangi = {}
-
-    for i in range(4):
-        for j in range(4):
-            kurangi = root.find_Kurangi()
-            listKurangi[table[i][j]] = kurangi
-            totalKurang += kurangi
-
+    listKurangi, totalKurang, solveable = root.is_solveable()
 
     ioHandler.printKurangi(listKurangi)
 
-    if(indX % 2 == 0 and (indY == 1 or indY == 3)):
-       varX = 1
-    
-    if(indX % 2 == 1 and (indY  == 0 or indY == 2)):
-        varX = 1
-
-    totalKurang += varX
-
     print("\u03A3Kurang(i) + X = ", (totalKurang))
-    if(totalKurang % 2 == 1):
+    if(not solveable):
         stop = timeit.default_timer()
-        
-        
+
         print("Puzzle tidak dapat diselesaikan !!")
-        print("Waktu yang dibutuhkan: ", stop - start)
+        print("Waktu yang dibutuhkan: ", stop - start, " sekon")
         return
 
     print()
@@ -102,10 +84,11 @@ def main():
     print()
 
 
-    solve(Board(table, indX, indY, 0))
+    solve(root)
     print("Puzzle diselesaikan !!")
+    
     stop = timeit.default_timer()
-    print("Waktu yang dibutuhkan: ", stop - start)
+    print("Waktu yang dibutuhkan: ", stop - start, " sekon")
     print("Simpul yang dibangkitkan: ", boardCount)
 
 if(__name__ == "__main__"):

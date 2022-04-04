@@ -45,6 +45,32 @@ class Board:
 
         return count
 
+    def is_solveable(self):
+        varX = 0
+        totalKurang = 0
+        listKurangi = {}
+
+        for i in range(4):
+            for j in range(4):
+                kurangi = self.find_Kurangi(i, j)
+                listKurangi[self.table[i][j]] = kurangi
+                totalKurang += kurangi
+
+        if(self.indX % 2 == 0 and (self.indY == 1 or self.indY == 3)):
+            varX = 1
+    
+        if(self.indX % 2 == 1 and (self.indY  == 0 or self.indY == 2)):
+            varX = 1
+
+        totalKurang += varX
+
+        if(totalKurang % 2 == 1):
+            return listKurangi, totalKurang, False
+        else:
+            return listKurangi, totalKurang, True
+
+
+
     def get_table(self):
         return self.table
 
